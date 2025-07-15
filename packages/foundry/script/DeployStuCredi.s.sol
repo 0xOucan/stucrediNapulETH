@@ -14,8 +14,8 @@ import "../contracts/RateMe/RateMe.sol";
  * yarn deploy --file DeployStuCredi.s.sol --network optimism # live network (requires keystore)
  */
 contract DeployStuCredi is ScaffoldETHDeploy {
-    // Mock USDC address for testing (replace with real USDC on mainnet)
-    address constant MOCK_USDC = 0xA0b86A33e6441d9d1E2D5F5b4B5e5E5e5e5E5e5e; // Replace with actual USDC
+    // USDC address for Avalanche Fuji testnet
+    address constant USDC_FUJI = 0x5425890298aed601595a70AB815c96711a31Bc65;
     
     error InvalidAddress();
 
@@ -29,8 +29,7 @@ contract DeployStuCredi is ScaffoldETHDeploy {
         );
 
         // Deploy Vault contract with USDC address
-        // Note: On mainnet, use real USDC address: 0xA0b86a33E6441d9d1E2D5F5B4B5e5e5e5e5e5e5e
-        Vault vault = new Vault(IERC20(MOCK_USDC));
+        Vault vault = new Vault(IERC20(USDC_FUJI));
         console.logString(
             string.concat(
                 "Vault deployed at: ", vm.toString(address(vault))
@@ -38,7 +37,7 @@ contract DeployStuCredi is ScaffoldETHDeploy {
         );
 
         // Deploy RateMe contract
-        RateMe rateMe = new RateMe(customNFT, vault, IERC20(MOCK_USDC));
+        RateMe rateMe = new RateMe(customNFT, vault, IERC20(USDC_FUJI));
         console.logString(
             string.concat(
                 "RateMe deployed at: ", vm.toString(address(rateMe))
@@ -54,12 +53,17 @@ contract DeployStuCredi is ScaffoldETHDeploy {
         customNFT.grantRole(sponsorRole, deployer);
         console.logString("SPONSOR_ROLE granted to deployer");
 
+        // Store deployment information for export
+        deployments.push(Deployment({name: "CustomNFT", addr: address(customNFT)}));
+        deployments.push(Deployment({name: "Vault", addr: address(vault)}));
+        deployments.push(Deployment({name: "RateMe", addr: address(rateMe)}));
+
         // Log deployment summary
         console.logString("=== StuCredi Deployment Complete ===");
         console.logString(string.concat("CustomNFT: ", vm.toString(address(customNFT))));
         console.logString(string.concat("Vault: ", vm.toString(address(vault))));
         console.logString(string.concat("RateMe: ", vm.toString(address(rateMe))));
-        console.logString(string.concat("Mock USDC: ", vm.toString(MOCK_USDC)));
+        console.logString(string.concat("USDC Fuji: ", vm.toString(USDC_FUJI)));
         console.logString("=====================================");
     }
 } 
