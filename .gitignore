@@ -23,3 +23,8 @@ node_modules
 dist
 .env
 .env.local
+.cursor
+examples/
+/examples/
+examples
+notes.md

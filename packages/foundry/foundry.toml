@@ -27,6 +27,9 @@ scroll = "https://rpc.scroll.io"
 pgn = "https://rpc.publicgoods.network"
 pgnTestnet = "https://sepolia.publicgoods.network"
 
+# Avalanche networks
+avalanche = "https://api.avax.network/ext/bc/C/rpc"
+avalancheFuji = "https://avalanche-fuji-c-chain-rpc.publicnode.com"
 
 localhost = "http://127.0.0.1:8545"
 
