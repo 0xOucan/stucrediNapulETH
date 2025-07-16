@@ -25,11 +25,13 @@ All contracts are verified and ready to interact with on [Snowtrace](https://tes
 - ⭐ **RateMe Contract**: Calculates student funding based on grades and NFT points
 - 🔄 **15-minute Rounds**: Quick funding cycles for testing and demonstration
 - 📊 **Point System**:
-  - 1 RATE Token = 1 point = 0.000010 USDC
-  - Minimum funding: 50 RATE (0.000500 USDC)
-  - Maximum funding: 150 RATE (0.001500 USDC)
-  - Each NFT = 5 points
-  - Academic grades contribute directly to points
+  - 1 RATE Token = 10 micro-USDC = 0.000010 USDC
+  - Minimum points: 50 (POINTS_MIN)
+  - Maximum points: 150 (POINTS_MAX)
+  - Each NFT = 5 points (POINTS_PER_NFT)
+  - Academic grades (1-100) contribute directly to points
+  - Students use `claim(grade)` to get RATE tokens
+  - Students use `redeem(rateAmount, sponsor)` to get USDC
 
 ## Smart Contracts Architecture
 
@@ -39,17 +41,19 @@ All contracts are verified and ready to interact with on [Snowtrace](https://tes
 - Sponsors can mint and distribute NFTs to participating students
 
 ### Vault.sol
-- Manages USDC deposits from sponsors
-- Funds are only accessible in exchange for RATE tokens
+- Manages USDC deposits from sponsors using `fundStream(total, perRound)`
+- RateMe contract pulls USDC via `pullAllowance(sponsor, usdcUnits)`
+- 15-minute round system with `MAX_PER_ROUND` limit (1500 micro-USDC)
 - Emergency withdrawal function for admin
-- 15-minute round system for fund distribution
 
 ### RateMe.sol
-- Calculates and mints RATE tokens based on:
+- Students claim RATE tokens using `claim(grade)` function
+- Calculates tokens based on:
   - Student's academic grade (1-100)
-  - Number of activity NFTs held
+  - Number of activity NFTs held (5 points each)
+- Students redeem RATE tokens for USDC using `redeem(rateAmount, sponsor)`
 - Maximum 150 RATE tokens per round
-- 1 RATE = 0.000010 USDC
+- 1 RATE = 10 micro-USDC = 0.000010 USDC
 
 ## Requirements
 
@@ -96,10 +100,14 @@ The StuCredi contracts are deployed and verified on Avalanche Fuji testnet. For 
 
 ## Testing
 
+### Local Testing
 Run smart contract tests:
 ```bash
 yarn foundry:test
 ```
+
+### Live Contract Testing
+For testing the deployed contracts on Avalanche Fuji using Snowtrace explorer, see [TESTING_GUIDE.md](TESTING_GUIDE.md).
 
 ## Development
 
