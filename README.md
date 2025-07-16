@@ -91,12 +91,20 @@ Visit your app on: `http://localhost:3000`
 
 ## 🌐 Avalanche Fuji Deployment
 
-The StuCredi contracts are deployed and verified on Avalanche Fuji testnet. For deployment instructions, see [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
+The StuCredi contracts are deployed and verified on Avalanche Fuji testnet. The frontend is configured to connect directly to these contracts.
 
 **Network Details:**
 - **Chain ID**: 43113
 - **RPC URL**: https://avalanche-fuji-c-chain-rpc.publicnode.com
 - **USDC Fuji**: `0x5425890298aed601595a70AB815c96711a31Bc65`
+
+**Frontend Configuration:**
+- **Debug Interface**: http://localhost:3000/debug
+- **Wallet Support**: MetaMask, WalletConnect, Rainbow, Coinbase Wallet
+- **Real-time Contract Interaction**: Available through Scaffold-ETH debug interface
+
+For deployment instructions, see [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
+For frontend setup, see [FRONTEND_SETUP.md](FRONTEND_SETUP.md).
 
 ## Testing
 
@@ -107,7 +115,8 @@ yarn foundry:test
 ```
 
 ### Live Contract Testing
-For testing the deployed contracts on Avalanche Fuji using Snowtrace explorer, see [TESTING_GUIDE.md](TESTING_GUIDE.md).
+- **Snowtrace Explorer**: See [TESTING_GUIDE.md](TESTING_GUIDE.md) for manual testing
+- **Scaffold-ETH Debug Interface**: See [FRONTEND_SETUP.md](FRONTEND_SETUP.md) for interactive testing
 
 ## Development
 
