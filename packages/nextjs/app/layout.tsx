@@ -5,8 +5,9 @@ import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Scaffold-ETH 2 App",
-  description: "Built with 🏗 Scaffold-ETH 2",
+  title: "StuCredi - Student Credit Platform",
+  description:
+    "Decentralized student credit system based on academic performance and event participation. Built with 🏗 Scaffold-ETH 2 for NapulETH Hackathon.",
 });
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
