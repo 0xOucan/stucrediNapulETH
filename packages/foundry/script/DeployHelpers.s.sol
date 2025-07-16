@@ -3,7 +3,6 @@ pragma solidity ^0.8.19;
 
 import { Script, console } from "forge-std/Script.sol";
 import { Vm } from "forge-std/Vm.sol";
-
 contract ScaffoldETHDeploy is Script {
     error InvalidChain();
     error DeployerHasNoBalance();
@@ -71,17 +70,22 @@ contract ScaffoldETHDeploy is Script {
 
         string memory chainName;
 
-        try this.getChain() returns (Chain memory chain) {
+        try vm.getChain(block.chainid) returns (Vm.Chain memory chain) {
             chainName = chain.name;
         } catch {
-            chainName = findChainName();
+            try this.findChainName() returns (string memory name) {
+                chainName = name;
+            } catch {
+                // Fallback for unknown chains
+                chainName = string.concat("chain_", vm.toString(block.chainid));
+            }
         }
         jsonWrite = vm.serializeString(jsonWrite, "networkName", chainName);
         vm.writeJson(jsonWrite, path);
     }
 
-    function getChain() public returns (Chain memory) {
-        return getChain(block.chainid);
+    function getChain() public returns (Vm.Chain memory) {
+        return vm.getChain(block.chainid);
     }
 
     function anvil_setBalance(address addr, uint256 amount) public {

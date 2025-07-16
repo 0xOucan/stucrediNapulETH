@@ -1,2 +1,2 @@
-# Ignore 31337 deployments
+# Ignore local deployments only
 31337.json

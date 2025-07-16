@@ -8,6 +8,16 @@
 
 ⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
 
+## 🚀 Live Deployment
+
+**✅ Verified Contracts on Avalanche Fuji Testnet:**
+
+- **CustomNFT**: [`0xa4ba4e9270bde8fbbf4328925959287a72ba0a55`](https://testnet.snowtrace.io/address/0xa4ba4e9270bde8fbbf4328925959287a72ba0a55)
+- **Vault**: [`0x3d6cb29a1f97a2cff7a48af96f7ed3a02f6aa38e`](https://testnet.snowtrace.io/address/0x3d6cb29a1f97a2cff7a48af96f7ed3a02f6aa38e)
+- **RateMe**: [`0x79e043686cce3ee4cd66fc2dbe15fda812da5285`](https://testnet.snowtrace.io/address/0x79e043686cce3ee4cd66fc2dbe15fda812da5285)
+
+All contracts are verified and ready to interact with on [Snowtrace](https://testnet.snowtrace.io/).
+
 ## Core Features
 
 - 🎨 **CustomNFT Contract**: Enables sponsors to create and distribute NFTs for events and activities
@@ -74,6 +84,15 @@ yarn start
 ```
 
 Visit your app on: `http://localhost:3000`
+
+## 🌐 Avalanche Fuji Deployment
+
+The StuCredi contracts are deployed and verified on Avalanche Fuji testnet. For deployment instructions, see [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
+
+**Network Details:**
+- **Chain ID**: 43113
+- **RPC URL**: https://avalanche-fuji-c-chain-rpc.publicnode.com
+- **USDC Fuji**: `0x5425890298aed601595a70AB815c96711a31Bc65`
 
 ## Testing
 
