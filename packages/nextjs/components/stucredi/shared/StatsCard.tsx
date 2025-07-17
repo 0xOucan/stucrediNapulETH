@@ -1,4 +1,7 @@
 import React from "react";
+import { Badge } from "~~/components/ui/badge";
+import { Card, CardContent } from "~~/components/ui/card";
+import { cn } from "~~/lib/utils";
 
 interface StatsCardProps {
   title: string;
@@ -7,6 +10,7 @@ interface StatsCardProps {
   description?: string;
   className?: string;
   loading?: boolean;
+  variant?: "default" | "glow" | "success" | "warning";
 }
 
 export const StatsCard: React.FC<StatsCardProps> = ({
@@ -16,63 +20,91 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   description,
   className = "",
   loading = false,
+  variant = "default",
 }) => {
-  return (
-    <div
-      className={`glass-card p-6 rounded-2xl shadow-lg border border-white/20 backdrop-blur-lg 
-                    hover:border-pink-500/50 hover:shadow-pink-500/20 hover:shadow-2xl
-                    transition-all duration-300 float-element group ${className}`}
-    >
-      {/* Subtle glow effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+  const getIconColor = () => {
+    switch (variant) {
+      case "glow":
+        return "text-pink-400 group-hover:text-pink-300 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]";
+      case "success":
+        return "text-green-400 group-hover:text-green-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]";
+      case "warning":
+        return "text-yellow-400 group-hover:text-yellow-300 drop-shadow-[0_0_8px_rgba(234,179,8,0.6)]";
+      default:
+        return "text-cyan-400 group-hover:text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]";
+    }
+  };
 
-      <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-3">
-          <div
-            className="text-cyan-400 group-hover:text-pink-400 transition-colors duration-300 
-                          group-hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]"
-          >
-            {icon}
-          </div>
-          <h3
-            className="font-semibold text-white/90 group-hover:text-white transition-colors duration-300 
-                         font-rajdhani tracking-wide"
-          >
+  const getValueColor = () => {
+    switch (variant) {
+      case "glow":
+        return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-300 group-hover:to-purple-300 group-hover:bg-clip-text";
+      case "success":
+        return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:to-emerald-300 group-hover:bg-clip-text";
+      case "warning":
+        return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-300 group-hover:to-orange-300 group-hover:bg-clip-text";
+      default:
+        return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-blue-300 group-hover:bg-clip-text";
+    }
+  };
+
+  return (
+    <Card
+      variant="glass"
+      float
+      className={cn(
+        "group hover:scale-105 cursor-pointer animate-bounce-in",
+        variant === "glow" && "hover:border-pink-500/50 hover:shadow-pink-500/30",
+        variant === "success" && "hover:border-green-500/50 hover:shadow-green-500/30",
+        variant === "warning" && "hover:border-yellow-500/50 hover:shadow-yellow-500/30",
+        className,
+      )}
+    >
+      <CardContent className="p-6">
+        {/* Header with icon and title */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className={cn("transition-all duration-300 group-hover:scale-110", getIconColor())}>{icon}</div>
+          <h3 className="font-semibold text-white/90 group-hover:text-white transition-colors duration-300 font-orbitron tracking-wide">
             {title}
           </h3>
         </div>
 
         {loading ? (
-          <div className="animate-pulse">
-            <div className="h-8 bg-white/20 rounded-lg w-20 mb-2 animate-pulse"></div>
+          <div className="space-y-3">
+            <div className="h-8 bg-white/20 rounded-lg w-24 animate-pulse"></div>
             {description && <div className="h-4 bg-white/10 rounded-lg w-32 animate-pulse"></div>}
           </div>
         ) : (
-          <>
+          <div className="space-y-2">
             <div
-              className="text-3xl font-bold text-white mb-1 font-orbitron 
-                           group-hover:text-transparent group-hover:bg-gradient-to-r 
-                           group-hover:from-pink-400 group-hover:to-cyan-400 
-                           group-hover:bg-clip-text transition-all duration-300
-                           group-hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]"
+              className={cn(
+                "text-3xl font-bold text-white mb-1 font-orbitron transition-all duration-300",
+                getValueColor(),
+              )}
             >
               {value}
             </div>
             {description && (
-              <p className="text-sm text-white/70 group-hover:text-white/90 transition-colors duration-300">
+              <p className="text-sm text-white/70 group-hover:text-white/90 transition-colors duration-300 font-rajdhani leading-relaxed">
                 {description}
               </p>
             )}
-          </>
+          </div>
         )}
-      </div>
 
-      {/* Animated border effect */}
-      <div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 
-                      opacity-0 group-hover:opacity-20 transition-opacity duration-300 animate-pulse"
-        style={{ clipPath: "inset(0 round 1rem)" }}
-      />
-    </div>
+        {/* Subtle indicator badge */}
+        {variant !== "default" && (
+          <Badge
+            variant={variant === "glow" ? "glow" : variant === "success" ? "success" : "warning"}
+            className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            {variant === "glow" ? "Featured" : variant === "success" ? "Active" : "Alert"}
+          </Badge>
+        )}
+
+        {/* Animated accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </CardContent>
+    </Card>
   );
 };

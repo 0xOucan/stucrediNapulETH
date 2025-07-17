@@ -15,6 +15,9 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
+import { Badge } from "~~/components/ui/badge";
+import { Button } from "~~/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~~/components/ui/card";
 
 // Dynamically import 3D component to avoid SSR issues
 const FloatingLogo3D = dynamic(() => import("~~/components/FloatingLogo3D"), {
@@ -59,51 +62,34 @@ const Home: NextPage = () => {
           </p>
 
           {/* Connection Status */}
-          <div
-            className="flex justify-center items-center space-x-2 flex-col mb-8 
-                          glass-card p-6 rounded-2xl max-w-md mx-auto"
-          >
-            <p className="font-medium text-white/90 font-orbitron">Connected Address:</p>
-            <div className="mt-2">
-              <Address address={connectedAddress} />
-            </div>
-            {isDeployer && (
-              <div
-                className="badge badge-primary badge-sm mt-2 
-                             bg-gradient-to-r from-pink-500 to-purple-500 
-                             border-none text-white shadow-lg shadow-pink-500/30"
-              >
-                Admin/Sponsor
+          <Card variant="glass" className="max-w-md mx-auto mb-8 text-center animate-bounce-in">
+            <CardContent className="p-6">
+              <p className="font-medium text-white/90 font-orbitron mb-3">Connected Address:</p>
+              <div className="mb-3">
+                <Address address={connectedAddress} />
               </div>
-            )}
-          </div>
+              {isDeployer && (
+                <Badge variant="glow" className="mt-2">
+                  Admin/Sponsor
+                </Badge>
+              )}
+            </CardContent>
+          </Card>
 
           {/* Role-based Navigation */}
           <div className="flex flex-col md:flex-row gap-6 justify-center mb-16">
-            <Link
-              href="/student"
-              className="btn btn-primary btn-lg group 
-                                           bg-gradient-to-r from-cyan-500 to-blue-500 
-                                           hover:from-cyan-400 hover:to-blue-400
-                                           border-none shadow-lg shadow-cyan-500/30
-                                           hover:shadow-cyan-400/50 hover:shadow-xl
-                                           transform hover:scale-105 transition-all duration-300"
-            >
-              <AcademicCapIcon className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
-              <span className="font-orbitron font-semibold">Student Interface</span>
-            </Link>
-            <Link
-              href="/sponsor"
-              className="btn btn-secondary btn-lg group
-                                           bg-gradient-to-r from-pink-500 to-purple-500 
-                                           hover:from-pink-400 hover:to-purple-400
-                                           border-none shadow-lg shadow-pink-500/30
-                                           hover:shadow-pink-400/50 hover:shadow-xl
-                                           transform hover:scale-105 transition-all duration-300"
-            >
-              <UserGroupIcon className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
-              <span className="font-orbitron font-semibold">Sponsor Interface</span>
-            </Link>
+            <Button asChild variant="secondary" size="xl" className="group">
+              <Link href="/student">
+                <AcademicCapIcon className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                Student Interface
+              </Link>
+            </Button>
+            <Button asChild variant="vaporwave" size="xl" className="group">
+              <Link href="/sponsor">
+                <UserGroupIcon className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                Sponsor Interface
+              </Link>
+            </Button>
           </div>
         </div>
 
@@ -117,61 +103,85 @@ const Home: NextPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* NFT System */}
-              <div
-                className="glass-card p-8 rounded-3xl text-center group hover:scale-105 
-                             transition-all duration-300 float-element"
+              <Card
+                variant="glass"
+                float
+                className="text-center group hover:scale-105 transition-all duration-300 animate-bounce-in"
               >
-                <div
-                  className="bg-gradient-to-br from-purple-500 to-pink-500 p-4 rounded-full 
-                               w-20 h-20 mx-auto mb-6 flex items-center justify-center
-                               group-hover:scale-110 transition-transform duration-300
-                               shadow-lg shadow-purple-500/30 group-hover:shadow-purple-400/50"
-                >
-                  <ShieldCheckIcon className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 neon-text-purple font-orbitron">NFT Participation</h3>
-                <p className="text-white/70 leading-relaxed font-rajdhani">
-                  Earn NFTs by participating in tech events. Each NFT adds 5 points to your academic score.
-                </p>
-              </div>
+                <CardHeader className="pb-4">
+                  <div
+                    className="bg-gradient-to-br from-purple-500 to-pink-500 p-4 rounded-full 
+                                 w-20 h-20 mx-auto mb-4 flex items-center justify-center
+                                 group-hover:scale-110 transition-transform duration-300
+                                 shadow-lg shadow-purple-500/30 group-hover:shadow-purple-400/50"
+                  >
+                    <ShieldCheckIcon className="h-10 w-10 text-white" />
+                  </div>
+                  <CardTitle className="text-xl neon-text-purple">NFT Participation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    Earn NFTs by participating in tech events. Each NFT adds 5 points to your academic score.
+                  </CardDescription>
+                  <Badge variant="glow" className="mt-4">
+                    +5 Points
+                  </Badge>
+                </CardContent>
+              </Card>
 
               {/* Grade System */}
-              <div
-                className="glass-card p-8 rounded-3xl text-center group hover:scale-105 
-                             transition-all duration-300 float-delayed"
+              <Card
+                variant="glass"
+                float
+                className="text-center group hover:scale-105 transition-all duration-300 animate-bounce-in animation-delay-150"
               >
-                <div
-                  className="bg-gradient-to-br from-cyan-500 to-blue-500 p-4 rounded-full 
-                               w-20 h-20 mx-auto mb-6 flex items-center justify-center
-                               group-hover:scale-110 transition-transform duration-300
-                               shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-400/50"
-                >
-                  <ChartBarIcon className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 neon-text font-orbitron">Grade-Based Rewards</h3>
-                <p className="text-white/70 leading-relaxed font-rajdhani">
-                  Submit your academic grades (1-100) to receive RATE tokens based on performance + NFT bonus.
-                </p>
-              </div>
+                <CardHeader className="pb-4">
+                  <div
+                    className="bg-gradient-to-br from-cyan-500 to-blue-500 p-4 rounded-full 
+                                 w-20 h-20 mx-auto mb-4 flex items-center justify-center
+                                 group-hover:scale-110 transition-transform duration-300
+                                 shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-400/50"
+                  >
+                    <ChartBarIcon className="h-10 w-10 text-white" />
+                  </div>
+                  <CardTitle className="text-xl neon-text">Grade-Based Rewards</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    Submit your academic grades (1-100) to receive RATE tokens based on performance + NFT bonus.
+                  </CardDescription>
+                  <Badge variant="secondary" className="mt-4">
+                    1-150 RATE
+                  </Badge>
+                </CardContent>
+              </Card>
 
               {/* Token Redemption */}
-              <div
-                className="glass-card p-8 rounded-3xl text-center group hover:scale-105 
-                             transition-all duration-300 float-element"
+              <Card
+                variant="glass"
+                float
+                className="text-center group hover:scale-105 transition-all duration-300 animate-bounce-in animation-delay-300"
               >
-                <div
-                  className="bg-gradient-to-br from-orange-500 to-red-500 p-4 rounded-full 
-                               w-20 h-20 mx-auto mb-6 flex items-center justify-center
-                               group-hover:scale-110 transition-transform duration-300
-                               shadow-lg shadow-orange-500/30 group-hover:shadow-orange-400/50"
-                >
-                  <CurrencyDollarIcon className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 neon-text-pink font-orbitron">Token Redemption</h3>
-                <p className="text-white/70 leading-relaxed font-rajdhani">
-                  Convert RATE tokens to USDC at a fixed rate (1 RATE = 0.000010 USDC).
-                </p>
-              </div>
+                <CardHeader className="pb-4">
+                  <div
+                    className="bg-gradient-to-br from-orange-500 to-red-500 p-4 rounded-full 
+                                 w-20 h-20 mx-auto mb-4 flex items-center justify-center
+                                 group-hover:scale-110 transition-transform duration-300
+                                 shadow-lg shadow-orange-500/30 group-hover:shadow-orange-400/50"
+                  >
+                    <CurrencyDollarIcon className="h-10 w-10 text-white" />
+                  </div>
+                  <CardTitle className="text-xl neon-text-pink">Token Redemption</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    Convert RATE tokens to USDC at a fixed rate (1 RATE = 0.000010 USDC).
+                  </CardDescription>
+                  <Badge variant="success" className="mt-4">
+                    Instant
+                  </Badge>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -182,27 +192,56 @@ const Home: NextPage = () => {
             <h2 className="text-3xl font-bold text-center mb-12 holo-text font-orbitron">Avalanche Fuji Testnet</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Contract addresses with glass morphism */}
-              <div className="glass-card p-6 rounded-2xl">
-                <h3 className="font-semibold text-cyan-400 mb-3 font-orbitron">CustomNFT Contract</h3>
-                <code className="text-sm text-white/80 break-all bg-black/20 p-3 rounded-lg block">
-                  0xa4ba4e9270bde8fbbf4328925959287a72ba0a55
-                </code>
-              </div>
+              <Card variant="glass" className="group hover:scale-105 transition-all duration-300 animate-slide-up">
+                <CardHeader>
+                  <CardTitle className="text-cyan-400 text-lg">CustomNFT Contract</CardTitle>
+                  <CardDescription>NFT participation rewards</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <code className="text-sm text-white/80 break-all bg-black/20 p-3 rounded-lg block">
+                    0xa4ba4e9270bde8fbbf4328925959287a72ba0a55
+                  </code>
+                  <Badge variant="secondary" className="mt-3">
+                    NFT Minting
+                  </Badge>
+                </CardContent>
+              </Card>
 
-              <div className="glass-card p-6 rounded-2xl">
-                <h3 className="font-semibold text-pink-400 mb-3 font-orbitron">Vault Contract</h3>
-                <code className="text-sm text-white/80 break-all bg-black/20 p-3 rounded-lg block">
-                  0x3d6cb29a1f97a2cff7a48af96f7ed3a02f6aa38e
-                </code>
-              </div>
+              <Card
+                variant="glass"
+                className="group hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-150"
+              >
+                <CardHeader>
+                  <CardTitle className="text-pink-400 text-lg">Vault Contract</CardTitle>
+                  <CardDescription>USDC funding management</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <code className="text-sm text-white/80 break-all bg-black/20 p-3 rounded-lg block">
+                    0x3d6cb29a1f97a2cff7a48af96f7ed3a02f6aa38e
+                  </code>
+                  <Badge variant="success" className="mt-3">
+                    Funded
+                  </Badge>
+                </CardContent>
+              </Card>
 
-              <div className="glass-card p-6 rounded-2xl">
-                <h3 className="font-semibold text-purple-400 mb-3 font-orbitron">RateMe Contract</h3>
-                <code className="text-sm text-white/80 break-all bg-black/20 p-3 rounded-lg block">
-                  0x79e043686cce3ee4cd66fc2dbe15fda812da5285
-                </code>
-              </div>
+              <Card
+                variant="glass"
+                className="group hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-300"
+              >
+                <CardHeader>
+                  <CardTitle className="text-purple-400 text-lg">RateMe Contract</CardTitle>
+                  <CardDescription>Grade submission & token claiming</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <code className="text-sm text-white/80 break-all bg-black/20 p-3 rounded-lg block">
+                    0x79e043686cce3ee4cd66fc2dbe15fda812da5285
+                  </code>
+                  <Badge variant="default" className="mt-3">
+                    Active
+                  </Badge>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -213,46 +252,49 @@ const Home: NextPage = () => {
             <h2 className="text-3xl font-bold text-center mb-12 neon-text font-orbitron">Developer Tools</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link
-                href="/debug"
-                className="glass-card p-6 rounded-2xl text-center group 
-                                           hover:border-cyan-500/50 transition-all duration-300"
+              <Card
+                variant="glass"
+                className="text-center group hover:scale-105 transition-all duration-300 animate-slide-up"
               >
-                <BugAntIcon
-                  className="h-12 w-12 text-cyan-400 mx-auto mb-4 
-                                      group-hover:scale-110 transition-transform duration-300"
-                />
-                <h3 className="text-lg font-semibold text-white mb-2 font-orbitron">Debug Contracts</h3>
-                <p className="text-white/70 text-sm font-rajdhani">Interact with contracts directly</p>
-              </Link>
+                <CardContent className="p-6">
+                  <BugAntIcon className="h-12 w-12 text-cyan-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <CardTitle className="text-lg mb-2">Debug Contracts</CardTitle>
+                  <CardDescription className="text-sm">Interact with contracts directly</CardDescription>
+                  <Button asChild variant="outline" className="mt-4 w-full">
+                    <Link href="/debug">Open Debug</Link>
+                  </Button>
+                </CardContent>
+              </Card>
 
-              <Link
-                href="/blockexplorer"
-                className="glass-card p-6 rounded-2xl text-center group 
-                                                   hover:border-pink-500/50 transition-all duration-300"
+              <Card
+                variant="glass"
+                className="text-center group hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-150"
               >
-                <MagnifyingGlassIcon
-                  className="h-12 w-12 text-pink-400 mx-auto mb-4 
-                                               group-hover:scale-110 transition-transform duration-300"
-                />
-                <h3 className="text-lg font-semibold text-white mb-2 font-orbitron">Block Explorer</h3>
-                <p className="text-white/70 text-sm font-rajdhani">Browse transactions and blocks</p>
-              </Link>
+                <CardContent className="p-6">
+                  <MagnifyingGlassIcon className="h-12 w-12 text-pink-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <CardTitle className="text-lg mb-2">Block Explorer</CardTitle>
+                  <CardDescription className="text-sm">Browse transactions and blocks</CardDescription>
+                  <Button asChild variant="outline" className="mt-4 w-full">
+                    <Link href="/blockexplorer">Explore Blocks</Link>
+                  </Button>
+                </CardContent>
+              </Card>
 
-              <a
-                href="https://testnet.snowtrace.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-card p-6 rounded-2xl text-center group 
-                           hover:border-purple-500/50 transition-all duration-300"
+              <Card
+                variant="glass"
+                className="text-center group hover:scale-105 transition-all duration-300 animate-slide-up animation-delay-300"
               >
-                <ClockIcon
-                  className="h-12 w-12 text-purple-400 mx-auto mb-4 
-                                    group-hover:scale-110 transition-transform duration-300"
-                />
-                <h3 className="text-lg font-semibold text-white mb-2 font-orbitron">Snowtrace</h3>
-                <p className="text-white/70 text-sm font-rajdhani">Avalanche Fuji Explorer</p>
-              </a>
+                <CardContent className="p-6">
+                  <ClockIcon className="h-12 w-12 text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <CardTitle className="text-lg mb-2">Snowtrace</CardTitle>
+                  <CardDescription className="text-sm">Avalanche Fuji Explorer</CardDescription>
+                  <Button asChild variant="outline" className="mt-4 w-full">
+                    <a href="https://testnet.snowtrace.io/" target="_blank" rel="noopener noreferrer">
+                      View on Snowtrace
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
