@@ -7,117 +7,452 @@
 @theme {
   --shadow-center: 0 0 12px -2px rgb(0 0 0 / 0.05);
   --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  /* Vaporwave Colors */
+  --neon-pink: #ff00ff;
+  --neon-cyan: #00ffff;
+  --neon-purple: #8b00ff;
+  --electric-blue: #0080ff;
+  --sunset-orange: #ff4500;
+  --laser-green: #00ff41;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  /* Grid animations */
+  --grid-animation: grid-move 20s linear infinite;
+  --glow-animation: glow 2s ease-in-out infinite alternate;
+  
+  /* Font styles */
+  --font-cyber: 'Orbitron', 'Arial', sans-serif;
 }
 
 @plugin "daisyui" {
   themes:
-    light,
-    dark --prefersdark;
+    vaporwave,
+    cyberpunk --prefersdark;
 }
 
 @plugin "daisyui/theme" {
-  name: "light";
+  name: "vaporwave";
 
-  --color-primary: #93bbfb;
-  --color-primary-content: #212638;
-  --color-secondary: #dae8ff;
-  --color-secondary-content: #212638;
-  --color-accent: #93bbfb;
-  --color-accent-content: #212638;
-  --color-neutral: #212638;
+  --color-primary: #ff00ff;
+  --color-primary-content: #ffffff;
+  --color-secondary: #00ffff;
+  --color-secondary-content: #000000;
+  --color-accent: #8b00ff;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1a0033;
   --color-neutral-content: #ffffff;
-  --color-base-100: #ffffff;
-  --color-base-200: #f4f8ff;
-  --color-base-300: #dae8ff;
-  --color-base-content: #212638;
-  --color-info: #93bbfb;
-  --color-success: #34eeb6;
-  --color-warning: #ffcf72;
-  --color-error: #ff8863;
+  --color-base-100: rgba(26, 0, 51, 0.9);
+  --color-base-200: rgba(51, 0, 102, 0.8);
+  --color-base-300: rgba(76, 0, 153, 0.7);
+  --color-base-content: #ffffff;
+  --color-info: #00ffff;
+  --color-success: #00ff41;
+  --color-warning: #ff4500;
+  --color-error: #ff0066;
 
-  --radius-field: 9999rem;
+  --radius-field: 1rem;
   --radius-box: 1rem;
-  --tt-tailw: 6px;
 }
 
 @plugin "daisyui/theme" {
-  name: "dark";
+  name: "cyberpunk";
 
-  --color-primary: #212638;
-  --color-primary-content: #f9fbff;
-  --color-secondary: #323f61;
-  --color-secondary-content: #f9fbff;
-  --color-accent: #4969a6;
-  --color-accent-content: #f9fbff;
-  --color-neutral: #f9fbff;
-  --color-neutral-content: #385183;
-  --color-base-100: #385183;
-  --color-base-200: #2a3655;
-  --color-base-300: #212638;
-  --color-base-content: #f9fbff;
-  --color-info: #385183;
-  --color-success: #34eeb6;
-  --color-warning: #ffcf72;
-  --color-error: #ff8863;
+  --color-primary: #00ffff;
+  --color-primary-content: #000000;
+  --color-secondary: #ff00ff;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0080ff;
+  --color-accent-content: #ffffff;
+  --color-neutral: #000011;
+  --color-neutral-content: #ffffff;
+  --color-base-100: rgba(0, 0, 17, 0.95);
+  --color-base-200: rgba(0, 0, 34, 0.9);
+  --color-base-300: rgba(0, 0, 51, 0.85);
+  --color-base-content: #ffffff;
+  --color-info: #00ffff;
+  --color-success: #00ff41;
+  --color-warning: #ff4500;
+  --color-error: #ff0066;
 
-  --radius-field: 9999rem;
+  --radius-field: 1rem;
   --radius-box: 1rem;
-
-  --tt-tailw: 6px;
-  --tt-bg: var(--color-primary);
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* Import Cyber Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Custom Font Classes */
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Keyframe Animations */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  to {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes grid-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-5px) rotate(1deg); }
+  66% { transform: translateY(-15px) rotate(-1deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+/* Base Layer Styles */
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-
-  p {
-    margin: 1rem 0;
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   body {
     min-height: 100vh;
+    font-family: 'Rajdhani', sans-serif;
+    background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #000011 100%);
+    position: relative;
+    overflow-x: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
+  /* Cyber Grid Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  h1, h2, h3, h4 {
     margin-bottom: 0.5rem;
-    line-height: 1;
+    line-height: 1.2;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 1rem 0;
+    line-height: 1.6;
   }
 }
 
-:root,
-[data-theme] {
-  background: var(--color-base-200);
+/* Glassmorphism Components */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
 }
 
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+/* Neon Text Effects */
+.neon-text {
+  color: #00ffff;
+  animation: glow 2s ease-in-out infinite alternate;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+.neon-text-pink {
+  color: #ff00ff;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.neon-text-purple {
+  color: #8b00ff;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Holographic Text */
+.holo-text {
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #8b00ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Animation Classes */
+.float-element {
+  animation: float 3s ease-in-out infinite;
+}
+
+.float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+}
+
+/* Button Enhancements */
 .btn {
-  @apply shadow-md;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff00ff, #8b00ff);
+  border: 1px solid #ff00ff;
+  color: white;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #00ffff, #0080ff);
+  border: 1px solid #00ffff;
+  color: white;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
 }
 
 .btn.btn-ghost {
-  @apply shadow-none;
+  box-shadow: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Card Enhancements */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Link Styles */
 .link {
   text-underline-offset: 2px;
+  color: #00ffff;
+  transition: all 0.3s ease;
 }
 
 .link:hover {
-  opacity: 80%;
+  color: #ff00ff;
+  text-shadow: 0 0 10px currentColor;
+  opacity: 100%;
+}
+
+/* Cyber Particle Effect */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00ffff;
+  border-radius: 50%;
+  animation: particle-float 8s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Status and Badge Styles */
+.badge {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  font-weight: 600;
+}
+
+.badge-primary {
+  background: linear-gradient(135deg, #ff00ff, #8b00ff);
+  color: white;
+  border-color: #ff00ff;
+}
+
+.badge-secondary {
+  background: linear-gradient(135deg, #00ffff, #0080ff);
+  color: white;
+  border-color: #00ffff;
+}
+
+/* Input Field Enhancements */
+.input, .textarea, .select {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  outline: none;
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Loading and Progress Indicators */
+.loading {
+  border-color: #00ffff;
+  border-top-color: transparent;
+}
+
+.progress {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.progress-primary {
+  background: linear-gradient(90deg, #ff00ff, #8b00ff);
+}
+
+/* Alert Styles */
+.alert {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  border-left: 4px solid #00ffff;
+}
+
+.alert-success {
+  border-left-color: #00ff41;
+}
+
+.alert-warning {
+  border-left-color: #ff4500;
+}
+
+.alert-error {
+  border-left-color: #ff00ff;
+}
+
+/* Responsive Adaptations */
+@media (max-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+  
+  body::before {
+    background-size: 30px 30px;
+  }
+  
+  .neon-text,
+  .neon-text-pink,
+  .neon-text-purple {
+    animation: none;
+    text-shadow: 0 0 5px currentColor;
+  }
+}
+
+/* Dark/Light theme overrides */
+:root,
+[data-theme] {
+  background: transparent;
 }

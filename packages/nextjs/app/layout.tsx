@@ -1,4 +1,5 @@
 import "@rainbow-me/rainbowkit/styles.css";
+import ParticleSystem from "~~/components/ParticleSystem";
 import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
@@ -12,9 +13,10 @@ export const metadata = getMetadata({
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html suppressHydrationWarning className={``}>
+    <html suppressHydrationWarning className={``} data-theme="vaporwave">
       <body>
         <ThemeProvider enableSystem>
+          <ParticleSystem />
           <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
         </ThemeProvider>
       </body>
