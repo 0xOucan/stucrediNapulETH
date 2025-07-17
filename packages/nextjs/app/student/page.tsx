@@ -13,6 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 import { ActionCard, NFTBalance, RoleChecker, StatsCard, TokenBalance } from "~~/components/stucredi/shared";
+import { Input } from "~~/components/ui/input";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 
@@ -185,15 +186,16 @@ const StudentPage: NextPage = () => {
               action={
                 <div className="space-y-4">
                   <div className="flex gap-4">
-                    <input
+                    <Input
                       type="number"
                       min="1"
                       max="100"
                       value={grade}
                       onChange={e => setGrade(e.target.value)}
                       placeholder="Enter grade (1-100)"
-                      className="input input-bordered flex-1"
+                      className="flex-1"
                       disabled={hasClaimedThisRound}
+                      variant="glow"
                     />
                     <button
                       onClick={handleGradeSubmit}
@@ -212,12 +214,12 @@ const StudentPage: NextPage = () => {
                   </div>
 
                   {grade && canClaim && (
-                    <div className="bg-info/20 border border-info rounded-lg p-4">
+                    <div className="glass-card bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/40 rounded-xl p-4 shadow-lg shadow-cyan-500/20">
                       <div className="flex items-center gap-2 mb-2">
-                        <ChartBarIcon className="h-5 w-5 text-info" />
-                        <span className="font-medium">Calculation Preview</span>
+                        <ChartBarIcon className="h-5 w-5 text-cyan-400" />
+                        <span className="font-medium text-cyan-400 font-rajdhani">Calculation Preview</span>
                       </div>
-                      <div className="text-sm space-y-1">
+                      <div className="text-sm space-y-1 text-white/90 font-rajdhani">
                         <p>Total Points: {claimablePoints}</p>
                         <p>RATE Tokens: {(claimableTokens / 1e18).toFixed(0)}</p>
                         <p>USDC Value: ${((claimableTokens / 1e18) * 0.00001).toFixed(6)}</p>
@@ -226,10 +228,10 @@ const StudentPage: NextPage = () => {
                   )}
 
                   {hasClaimedThisRound && (
-                    <div className="bg-success/20 border border-success rounded-lg p-4">
+                    <div className="glass-card bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/40 rounded-xl p-4 shadow-lg shadow-green-500/20">
                       <div className="flex items-center gap-2">
-                        <CheckCircleIcon className="h-5 w-5 text-success" />
-                        <span className="font-medium text-success">Already claimed this round</span>
+                        <CheckCircleIcon className="h-5 w-5 text-green-400" />
+                        <span className="font-medium text-green-400 font-rajdhani">Already claimed this round</span>
                       </div>
                     </div>
                   )}
@@ -248,14 +250,15 @@ const StudentPage: NextPage = () => {
               action={
                 <div className="space-y-4">
                   <div className="flex gap-4">
-                    <input
+                    <Input
                       type="number"
                       min="0"
                       step="1"
                       value={redeemAmount}
                       onChange={e => setRedeemAmount(e.target.value)}
                       placeholder="Enter RATE amount"
-                      className="input input-bordered flex-1"
+                      className="flex-1"
+                      variant="default"
                     />
                     <button
                       onClick={handleRedeem}
@@ -274,12 +277,12 @@ const StudentPage: NextPage = () => {
                   </div>
 
                   {redeemAmount && usdcValue && (
-                    <div className="bg-secondary/20 border border-secondary rounded-lg p-4">
+                    <div className="glass-card bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/40 rounded-xl p-4 shadow-lg shadow-purple-500/20">
                       <div className="flex items-center gap-2 mb-2">
-                        <CurrencyDollarIcon className="h-5 w-5 text-secondary" />
-                        <span className="font-medium">Redemption Preview</span>
+                        <CurrencyDollarIcon className="h-5 w-5 text-purple-400" />
+                        <span className="font-medium text-purple-400 font-rajdhani">Redemption Preview</span>
                       </div>
-                      <div className="text-sm space-y-1">
+                      <div className="text-sm space-y-1 text-white/90 font-rajdhani">
                         <p>RATE Tokens: {redeemAmount}</p>
                         <p>USDC Received: ${(Number(usdcValue) / 1000000).toFixed(6)}</p>
                         <p>Sponsor: {DEPLOYER_ADDRESS}</p>

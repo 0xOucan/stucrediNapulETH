@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Address, AddressInput } from "~~/components/scaffold-eth";
 import { ActionCard, RoleChecker, StatsCard } from "~~/components/stucredi/shared";
+import { Input } from "~~/components/ui/input";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 
@@ -381,26 +382,28 @@ const SponsorPage: NextPage = () => {
                       <label className="label">
                         <span className="label-text">Total USDC Amount</span>
                       </label>
-                      <input
+                      <Input
                         type="number"
                         step="0.000001"
                         value={fundAmount}
                         onChange={e => setFundAmount(e.target.value)}
                         placeholder="0.001"
-                        className="input input-bordered w-full"
+                        className="w-full"
+                        variant="glow"
                       />
                     </div>
                     <div>
                       <label className="label">
                         <span className="label-text">Max per Round</span>
                       </label>
-                      <input
+                      <Input
                         type="number"
                         step="0.000001"
                         value={perRoundAmount}
                         onChange={e => setPerRoundAmount(e.target.value)}
                         placeholder="0.0015"
-                        className="input input-bordered w-full"
+                        className="w-full"
+                        variant="glow"
                       />
                     </div>
                   </div>
