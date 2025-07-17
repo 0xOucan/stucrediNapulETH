@@ -79,14 +79,16 @@ export const ReadOnlyFunctionForm = ({
       <div className="flex flex-col md:flex-row justify-between gap-2 flex-wrap">
         <div className="grow w-full md:max-w-[80%]">
           {result !== null && result !== undefined && (
-            <div className="bg-secondary rounded-3xl text-sm px-4 py-1.5 break-words overflow-auto">
-              <p className="font-bold m-0 mb-1">Result:</p>
-              <pre className="whitespace-pre-wrap break-words">{displayTxResult(result, "sm")}</pre>
+            <div className="glass-card bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl text-sm px-4 py-2 break-words overflow-auto border border-cyan-500/30">
+              <p className="font-bold m-0 mb-1 text-cyan-400 font-orbitron">Result:</p>
+              <pre className="whitespace-pre-wrap break-words text-white/90 font-rajdhani">
+                {displayTxResult(result, "sm")}
+              </pre>
             </div>
           )}
         </div>
         <button
-          className="btn btn-secondary btn-sm self-end md:self-start"
+          className="btn btn-sm bg-gradient-to-r from-cyan-500 to-blue-500 text-white border border-cyan-400/50 hover:from-cyan-400 hover:to-blue-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 font-rajdhani font-semibold self-end md:self-start"
           onClick={async () => {
             const { data } = await refetch();
             setResult(data);

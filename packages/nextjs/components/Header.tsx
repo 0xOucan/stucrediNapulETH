@@ -50,8 +50,10 @@ const HeaderMenuLinks = () => {
               href={href}
               passHref
               className={`${
-                isActive ? "bg-secondary shadow-md" : ""
-              } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+                isActive
+                  ? "bg-gradient-to-r from-purple-500/30 to-pink-500/30 shadow-lg shadow-purple-500/20 border border-purple-500/30"
+                  : "bg-white/5 border border-white/10"
+              } hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-purple-500/20 hover:shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-400/50 focus:!bg-gradient-to-r focus:!from-purple-500/30 focus:!to-pink-500/30 active:!text-white py-2 px-4 text-sm rounded-xl gap-2 grid grid-flow-col transition-all duration-300 backdrop-blur-sm font-rajdhani font-medium text-white/90 hover:text-white`}
             >
               {icon}
               <span>{label}</span>
@@ -76,14 +78,14 @@ export const Header = () => {
   });
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar glass-card min-h-0 shrink-0 justify-between z-20 shadow-lg shadow-purple-500/10 px-4 sm:px-6 border-b border-white/10">
       <div className="navbar-start w-auto lg:w-1/2">
         <details className="dropdown" ref={burgerMenuRef}>
-          <summary className="ml-1 btn btn-ghost lg:hidden hover:bg-transparent">
-            <Bars3Icon className="h-1/2" />
+          <summary className="ml-1 btn btn-ghost lg:hidden hover:bg-white/10 border border-white/10 backdrop-blur-sm">
+            <Bars3Icon className="h-6 w-6 text-cyan-400" />
           </summary>
           <ul
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow-sm bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-4 glass-card w-64 border border-white/20"
             onClick={() => {
               burgerMenuRef?.current?.removeAttribute("open");
             }}
@@ -91,20 +93,20 @@ export const Header = () => {
             <HeaderMenuLinks />
           </ul>
         </details>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-10 h-10">
-            <Image alt="StuCredi logo" className="cursor-pointer" fill src="/logo.svg" />
+        <Link href="/" passHref className="hidden lg:flex items-center gap-3 ml-4 mr-6 shrink-0 group">
+          <div className="flex relative w-12 h-12 group-hover:scale-110 transition-transform duration-300">
+            <Image alt="StuCredi logo" className="cursor-pointer drop-shadow-lg" fill src="/logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">🎓 StuCredi</span>
-            <span className="text-xs">Student Credit Platform</span>
+            <span className="font-bold leading-tight text-white font-orbitron text-lg neon-text">🎓 StuCredi</span>
+            <span className="text-sm text-white/70 font-rajdhani">Student Credit Platform</span>
           </div>
         </Link>
-        <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
+        <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-3">
           <HeaderMenuLinks />
         </ul>
       </div>
-      <div className="navbar-end grow mr-4">
+      <div className="navbar-end grow mr-4 gap-4">
         <RainbowKitCustomConnectButton />
         {isLocalNetwork && <FaucetButton />}
       </div>

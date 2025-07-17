@@ -62,7 +62,7 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
               </p>
             )}
           </div>
-          <div className="bg-base-300 rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-base-300">
+          <div className="glass-card bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-purple-500/20 border border-purple-500/30">
             <ContractVariables
               refreshDisplayVariables={refreshDisplayVariables}
               deployedContractData={deployedContractData}
@@ -71,25 +71,25 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
         </div>
         <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
           <div className="z-10">
-            <div className="bg-base-100 rounded-3xl shadow-md shadow-secondary border border-base-300 flex flex-col mt-10 relative">
-              <div className="h-[5rem] w-[5.5rem] bg-base-300 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-base-300">
+            <div className="glass-card bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-3xl shadow-lg shadow-cyan-500/20 border border-cyan-500/30 flex flex-col mt-10 relative">
+              <div className="h-[5rem] w-[5.5rem] bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/40 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-cyan-500/30">
                 <div className="flex items-center justify-center space-x-2">
-                  <p className="my-0 text-sm">Read</p>
+                  <p className="my-0 text-sm font-orbitron font-semibold text-cyan-400">Read</p>
                 </div>
               </div>
-              <div className="p-5 divide-y divide-base-300">
+              <div className="p-5 divide-y divide-cyan-500/20">
                 <ContractReadMethods deployedContractData={deployedContractData} />
               </div>
             </div>
           </div>
           <div className="z-10">
-            <div className="bg-base-100 rounded-3xl shadow-md shadow-secondary border border-base-300 flex flex-col mt-10 relative">
-              <div className="h-[5rem] w-[5.5rem] bg-base-300 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-base-300">
+            <div className="glass-card bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-3xl shadow-lg shadow-purple-500/20 border border-purple-500/30 flex flex-col mt-10 relative">
+              <div className="h-[5rem] w-[5.5rem] bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/40 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-purple-500/30">
                 <div className="flex items-center justify-center space-x-2">
-                  <p className="my-0 text-sm">Write</p>
+                  <p className="my-0 text-sm font-orbitron font-semibold text-purple-400">Write</p>
                 </div>
               </div>
-              <div className="p-5 divide-y divide-base-300">
+              <div className="p-5 divide-y divide-purple-500/20">
                 <ContractWriteMethods
                   deployedContractData={deployedContractData}
                   onChange={triggerRefreshDisplayVariables}
