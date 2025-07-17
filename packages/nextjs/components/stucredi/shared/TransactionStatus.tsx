@@ -21,7 +21,7 @@ export const TransactionStatus: React.FC<TransactionStatusProps> = ({ status, me
       case "pending":
         return {
           icon: <ClockIcon className="h-5 w-5" />,
-          bgColor: "bg-warning/20",
+          bgColor: "bg-orange-500/20",
           borderColor: "border-warning",
           textColor: "text-warning",
           title: "Transaction Pending",

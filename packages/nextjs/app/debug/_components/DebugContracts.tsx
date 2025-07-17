@@ -41,10 +41,10 @@ export function DebugContracts() {
             <div className="flex flex-row gap-2 w-full max-w-7xl pb-1 px-6 lg:px-10 flex-wrap">
               {contractNames.map(contractName => (
                 <button
-                  className={`btn btn-secondary btn-sm font-light hover:border-transparent ${
+                  className={`btn btn-sm font-medium transition-all duration-300 border border-white/20 backdrop-blur-sm font-rajdhani ${
                     contractName === selectedContract
-                      ? "bg-base-300 hover:bg-base-300 no-animation"
-                      : "bg-base-100 hover:bg-secondary"
+                      ? "bg-gradient-to-r from-purple-500/30 to-pink-500/30 shadow-lg shadow-purple-500/20 border-purple-500/50 text-white hover:bg-gradient-to-r hover:from-purple-500/40 hover:to-pink-500/40 no-animation"
+                      : "bg-white/5 text-white/80 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-purple-500/20 hover:text-white hover:border-cyan-400/50"
                   }`}
                   key={contractName}
                   onClick={() => setSelectedContract(contractName)}

@@ -73,7 +73,9 @@ export const DisplayVariable = ({
         <div>
           <div
             className={`break-all block transition bg-transparent ${
-              showAnimation ? "bg-warning rounded-xs animate-pulse-fast" : ""
+              showAnimation
+                ? "bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-lg animate-pulse-fast border border-pink-500/30"
+                : ""
             }`}
           >
             {displayTxResult(result)}
