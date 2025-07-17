@@ -74,13 +74,13 @@ export const ActionCard: React.FC<ActionCardProps> = ({
         !disabled && "hover:scale-[1.02] cursor-pointer",
         getHoverEffects(),
         disabled && "opacity-50 cursor-not-allowed",
-        priority && "ring-1 ring-yellow-500/30 animate-shimmer",
+        priority && "ring-1 ring-purple-500/30 animate-shimmer",
         className,
       )}
     >
       {/* Priority indicator */}
       {priority && !disabled && (
-        <div className="absolute top-2 right-2 w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+        <div className="absolute top-2 right-2 w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
       )}
 
       {/* Holographic background effect */}

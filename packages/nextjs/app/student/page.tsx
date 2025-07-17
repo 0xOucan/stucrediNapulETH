@@ -139,9 +139,9 @@ const StudentPage: NextPage = () => {
           contractName="RateMe"
           role={studentRole as string}
           fallback={
-            <div className="bg-warning/20 border border-warning rounded-lg p-6 text-center">
-              <h3 className="font-bold text-warning mb-2">Student Role Required</h3>
-              <p className="text-warning/80">
+            <div className="glass-card bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 rounded-xl p-6 text-center shadow-lg shadow-orange-500/20">
+              <h3 className="font-bold text-orange-400 mb-2 font-orbitron">Student Role Required</h3>
+              <p className="text-orange-300/90 font-rajdhani">
                 You need to be granted the STUDENT_ROLE to access this interface. Please contact an admin to get the
                 required permissions.
               </p>
@@ -292,30 +292,30 @@ const StudentPage: NextPage = () => {
           </div>
 
           {/* Help Section */}
-          <div className="bg-base-200 rounded-lg p-6">
-            <h3 className="font-bold mb-4">How it works</h3>
+          <div className="glass-card bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/30 shadow-lg shadow-purple-500/20">
+            <h3 className="font-bold mb-4 text-white font-orbitron neon-text-purple">How it works</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
-                <h4 className="font-medium mb-2">📊 Grade Submission</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">📊 Grade Submission</h4>
+                <p className="text-white/70">
                   Submit your academic grade (1-100) to receive RATE tokens. Your total points = grade + (NFTs × 5).
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">💰 Token Redemption</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">💰 Token Redemption</h4>
+                <p className="text-white/70">
                   Exchange RATE tokens for USDC at a rate of 1 RATE = 10 micro-USDC (0.000010 USDC).
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">⏰ Round System</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">⏰ Round System</h4>
+                <p className="text-white/70">
                   Each round lasts 15 minutes. You can only claim once per round with a maximum of 150 RATE tokens.
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">🎯 NFT Bonus</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">🎯 NFT Bonus</h4>
+                <p className="text-white/70">
                   Participate in events to earn NFTs. Each NFT adds 5 points to your total score.
                 </p>
               </div>

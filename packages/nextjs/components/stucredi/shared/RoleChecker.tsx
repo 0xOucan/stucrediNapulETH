@@ -47,8 +47,8 @@ export const RoleChecker: React.FC<RoleCheckerProps> = ({
 
   if (!address) {
     return (
-      <div className="bg-warning/20 border border-warning rounded-lg p-4 text-center">
-        <p className="text-warning font-medium">Please connect your wallet to continue</p>
+      <div className="glass-card bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 rounded-xl p-4 text-center shadow-lg shadow-orange-500/20">
+        <p className="text-orange-400 font-medium font-rajdhani">Please connect your wallet to continue</p>
       </div>
     );
   }

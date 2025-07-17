@@ -1,10 +1,14 @@
-import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
-import { CommonInputProps } from "~~/components/scaffold-eth";
+import { ChangeEvent, FocusEvent, useCallback, useEffect, useRef } from "react";
 
-type InputBaseProps<T> = CommonInputProps<T> & {
+type InputBaseProps<T> = {
+  name?: string;
+  value: T;
+  onChange: (value: T) => void;
+  placeholder?: string;
   error?: boolean;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
+  disabled?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
   reFocus?: boolean;
 };
 
@@ -23,9 +27,9 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
 
   let modifier = "";
   if (error) {
-    modifier = "border-error";
+    modifier = "border-red-500/50 bg-red-500/10";
   } else if (disabled) {
-    modifier = "border-disabled bg-base-300";
+    modifier = "border-gray-600 bg-gray-800/50 opacity-50";
   }
 
   const handleChange = useCallback(
@@ -47,10 +51,12 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   }, [reFocus]);
 
   return (
-    <div className={`flex border-2 border-base-300 bg-base-200 rounded-full text-accent ${modifier}`}>
+    <div
+      className={`flex border-2 glass-card bg-white/5 rounded-xl border-white/20 transition-all duration-300 hover:border-cyan-500/30 focus-within:border-cyan-500/50 focus-within:shadow-lg focus-within:shadow-cyan-500/20 ${modifier}`}
+    >
       {prefix}
       <input
-        className="input input-ghost focus-within:border-transparent focus:outline-hidden focus:bg-transparent h-[2.2rem] min-h-[2.2rem] px-4 border w-full font-medium placeholder:text-accent/70 text-base-content/70 focus:text-base-content/70"
+        className="input input-ghost focus-within:border-transparent focus:outline-hidden focus:bg-transparent h-[2.2rem] min-h-[2.2rem] px-4 border w-full font-medium placeholder:text-white/50 text-white focus:text-white font-rajdhani"
         placeholder={placeholder}
         name={name}
         value={value?.toString()}

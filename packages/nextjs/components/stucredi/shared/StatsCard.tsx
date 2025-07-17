@@ -29,7 +29,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
       case "success":
         return "text-green-400 group-hover:text-green-300 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]";
       case "warning":
-        return "text-yellow-400 group-hover:text-yellow-300 drop-shadow-[0_0_8px_rgba(234,179,8,0.6)]";
+        return "text-orange-400 group-hover:text-orange-300 drop-shadow-[0_0_8px_rgba(251,146,60,0.6)]";
       default:
         return "text-cyan-400 group-hover:text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]";
     }
@@ -42,7 +42,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
       case "success":
         return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:to-emerald-300 group-hover:bg-clip-text";
       case "warning":
-        return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-300 group-hover:to-orange-300 group-hover:bg-clip-text";
+        return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-300 group-hover:to-red-300 group-hover:bg-clip-text";
       default:
         return "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-blue-300 group-hover:bg-clip-text";
     }
@@ -56,7 +56,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
         "group hover:scale-105 cursor-pointer animate-bounce-in",
         variant === "glow" && "hover:border-pink-500/50 hover:shadow-pink-500/30",
         variant === "success" && "hover:border-green-500/50 hover:shadow-green-500/30",
-        variant === "warning" && "hover:border-yellow-500/50 hover:shadow-yellow-500/30",
+        variant === "warning" && "hover:border-orange-500/50 hover:shadow-orange-500/30",
         className,
       )}
     >

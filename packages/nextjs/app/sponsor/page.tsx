@@ -212,13 +212,13 @@ const SponsorPage: NextPage = () => {
           contractName="CustomNFT"
           role={sponsorRole as string}
           fallback={
-            <div className="bg-warning/20 border border-warning rounded-lg p-6 text-center">
-              <h3 className="font-bold text-warning mb-2">Sponsor Role Required</h3>
-              <p className="text-warning/80">
+            <div className="glass-card bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 rounded-xl p-6 text-center shadow-lg shadow-orange-500/20">
+              <h3 className="font-bold text-orange-400 mb-2 font-orbitron">Sponsor Role Required</h3>
+              <p className="text-orange-300/90 font-rajdhani">
                 You need to be granted the SPONSOR_ROLE to access this interface. Please contact the admin to get the
                 required permissions.
               </p>
-              <p className="text-sm text-warning/60 mt-2">Admin Address: {DEPLOYER_ADDRESS}</p>
+              <p className="text-sm text-orange-400/80 mt-2 font-rajdhani">Admin Address: {DEPLOYER_ADDRESS}</p>
             </div>
           }
         >
@@ -420,12 +420,12 @@ const SponsorPage: NextPage = () => {
                     )}
                   </button>
 
-                  <div className="bg-warning/20 border border-warning rounded-lg p-4">
-                    <p className="text-sm text-warning">
+                  <div className="glass-card bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 rounded-xl p-4 shadow-lg shadow-orange-500/20">
+                    <p className="text-sm text-orange-400 font-rajdhani">
                       <strong>Note:</strong> You need to approve USDC spending before funding the vault. Make sure you
                       have sufficient USDC balance.
                     </p>
-                    <p className="text-sm text-warning mt-1">
+                    <p className="text-sm text-orange-400 mt-1 font-rajdhani">
                       <strong>Max per round:</strong> {Number(maxPerRound || 0)} micro-USDC ($
                       {(Number(maxPerRound || 0) / 1000000).toFixed(6)})
                     </p>
@@ -452,30 +452,30 @@ const SponsorPage: NextPage = () => {
           </div>
 
           {/* Help Section */}
-          <div className="bg-base-200 rounded-lg p-6">
-            <h3 className="font-bold mb-4">Sponsor Guide</h3>
+          <div className="glass-card bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl p-6 border border-purple-500/30 shadow-lg shadow-purple-500/20">
+            <h3 className="font-bold mb-4 text-white font-orbitron neon-text-purple">Sponsor Guide</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
-                <h4 className="font-medium mb-2">👥 Role Management</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">👥 Role Management</h4>
+                <p className="text-white/70">
                   Grant STUDENT_ROLE to addresses to allow them to submit grades and claim tokens.
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">🎯 NFT Minting</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">🎯 NFT Minting</h4>
+                <p className="text-white/70">
                   Mint NFTs to students for event participation. Each NFT adds 5 points to their total score.
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">💰 Vault Funding</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">💰 Vault Funding</h4>
+                <p className="text-white/70">
                   Fund the vault with USDC to enable student token redemptions. Set appropriate per-round limits.
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">⏰ Round System</h4>
-                <p className="text-base-content/70">
+                <h4 className="font-medium mb-2 text-cyan-400 font-rajdhani">⏰ Round System</h4>
+                <p className="text-white/70">
                   Rounds advance automatically every 15 minutes. Students can claim once per round.
                 </p>
               </div>

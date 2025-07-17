@@ -17,7 +17,7 @@ const badgeVariants = cva(
         success:
           "border-transparent bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg shadow-green-500/25",
         warning:
-          "border-transparent bg-gradient-to-r from-yellow-600 to-orange-600 text-white shadow-lg shadow-yellow-500/25",
+          "border-transparent bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/25",
         ghost: "border-white/20 text-white bg-white/10 backdrop-blur-sm",
         glow: "border-pink-500/30 bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-pink-300 shadow-lg shadow-pink-500/20 backdrop-blur-sm",
       },
